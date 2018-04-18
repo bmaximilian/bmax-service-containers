@@ -39,7 +39,7 @@ export class ServiceContainer {
             const requestedService: any = get(this, name);
 
             if (!isFunction(requestedService)) {
-                throw new Error(`The ServiceContainer is missing the ${name}() method.`);
+                throw new Error(`The ServiceContainer has no service with name "${name}" registered and is missing the ${name}() method.`);
             }
         }
 
@@ -50,9 +50,9 @@ export class ServiceContainer {
                 case 'singleton':
                     return foundService.component;
                 case 'factory':
-                    return foundService.component(...args);
+                    return new foundService.component(...args);
                 default:
-                    return foundService.component(...args);
+                    return new foundService.component(...args);
             }
         }
 
@@ -66,7 +66,7 @@ export class ServiceContainer {
      * @param {Object} component : The service component
      * @param {String} type : singleton or factory
      */
-    public set(name: string, component: any, type: string = 'singleton') {
+    public set(name: string, component: any, type: string = 'singleton', ...args: any[]) {
         if (this.has(name)) {
             throw new Error(`A service with the name "${name}" exists already.`);
         }
@@ -79,12 +79,12 @@ export class ServiceContainer {
 
         switch (type) {
             case 'singleton':
-                newService.component = new component();
+                newService.component = new component(...args);
                 break;
             case 'factory':
                 break;
             default:
-                newService.component = new component();
+                newService.component = new component(...args);
                 break;
         }
 
