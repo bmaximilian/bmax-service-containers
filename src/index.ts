@@ -1,6 +1,6 @@
-
-import { hello } from './test/hello'
+import { GlobalServiceContainer, ServiceContainer } from './serviceContainer';
 
 export {
-  hello,
+    ServiceContainer,
+    GlobalServiceContainer,
 };
