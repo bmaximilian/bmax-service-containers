@@ -38,7 +38,6 @@ describe('ServiceContainer', () => {
 
     it('Should check if a service is set', () => {
         const services = new ServiceContainer();
-        const getMockService = () => services.get('mock');
 
         expect(services.has('mock')).to.be.false;
         expect(services.set('mock', MockService)).to.be.undefined;

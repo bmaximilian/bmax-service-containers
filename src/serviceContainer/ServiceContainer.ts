@@ -39,7 +39,7 @@ export class ServiceContainer {
             const requestedService: any = get(this, name);
 
             if (!isFunction(requestedService)) {
-                throw new Error(`The ServiceContainer has no service with name "${name}" registered and is missing the ${name}() method.`);
+                throw new Error(`The ServiceContainer has no service with name "${name}" registered.`);
             }
         }
 

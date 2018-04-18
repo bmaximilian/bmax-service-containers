@@ -3,7 +3,8 @@
     "tslint:recommended",
     "tslint-config-prettier",
     "tslint-eslint-rules",
-    "tslint-config-airbnb"
+    "tslint-config-airbnb",
+    "tslint-no-unused-expression-chai"
   ],
   "rules": {
     "import/extensions": [
