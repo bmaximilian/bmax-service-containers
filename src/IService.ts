@@ -8,7 +8,7 @@
  * An interface of how the services should look like
  */
 export interface IService {
-    component: (...a: any[]) => object;
+    component: any;
     type: string;
     name: string;
 }
